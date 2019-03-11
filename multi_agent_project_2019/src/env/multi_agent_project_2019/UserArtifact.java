@@ -30,17 +30,24 @@ public class UserArtifact extends GUIArtifact {
     		// create community and add it to the table of my communities
     		switch(communityType) {
     			case "Community_1":{
-    				System.out.println("User created a community of type "+communityType+" and it's name is\" "+community_name+"\"");
+    				//System.out.println("User created a community of type "+communityType+" and it's name is\" "+community_name+"\"");
+    				
     				// do the work to create the new artificat
+
+    		    	this.signal("cmd", "createCommunity_1",community_name);
+    		    	this.signal("cmdFocus1",community_name);
+    		    	
     				break;
     			}
     			case "Community_2":{
     				System.out.println("User created a community of type "+communityType);
     				// do the work to create the new artificat
+    				this.signal("cmd", "createCommunity_2",community_name);
     				break;
     			}case "Community_3":{
     				System.out.println("User created a community of type "+communityType);
     				// do the work to create the new artificat
+    				this.signal("cmd", "createCommunity_1",community_name);
     				break;
     			}
     		}

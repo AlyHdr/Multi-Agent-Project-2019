@@ -1,6 +1,5 @@
 /*
-    multi_agent_project_2019
-    ---------------------------
+    multi_agent_project_2019    ---------------------------
 
     JaCaMo Project File
 
@@ -14,14 +13,12 @@
 
 mas multi_agent_project_2019 {
 
-    agent sample_agent {
-    	focus : jacamo.gui
-    }
 	
-	workspace jacamo {
-        artifact gui: multi_agent_project_2019.UserArtifact("title1")
-    }
-    
+	workspace city {
+		//artifact user_artifact : multi_agent_project_2019.UserArtifact("Interface")
+   }
+   platform: cartago("infrastructure")
+   node servernode running @ 192.168.43.228
 
 }
 
