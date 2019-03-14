@@ -6,9 +6,11 @@ mas client{
 		
 	}
 	agent othmane_agent : agent_2.asl {
-		
-		
-		
+				
+	}
+	
+	agent new_agent : agent_3.asl {
+				
 	}
   // change localhost to the IP of the machine where the server is launched
   node servernode running @ localhost
