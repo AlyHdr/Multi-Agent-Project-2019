@@ -25,7 +25,7 @@ public class Community_1 extends GUIArtifact {
 	}
     @INTERNAL_OPERATION void sendMessage(ActionEvent ev){
     	String messageContent = myFrame.getTextField_message().getText().trim();
-    	System.out.println("Sending message... "+messageContent);
+    	System.out.println("Sending message...asd "+messageContent);
     	String agent_name = "test_agent";
     	this.signal("cmdSendMessage",messageContent,agent_name);
     }
