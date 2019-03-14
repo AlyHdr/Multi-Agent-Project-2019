@@ -40,9 +40,10 @@ public class UserArtifact extends GUIArtifact {
     				break;
     			}
     			case "Community_2":{
-    				System.out.println("User created a community of type "+communityType);
+    				System.out.println("User created a community of type "+community_name);
     				// do the work to create the new artificat
     				this.signal("cmd", "createCommunity_2",community_name);
+    				this.signal("cmdFocus2",community_name);
     				break;
     			}case "Community_3":{
     				System.out.println("User created a community of type "+communityType);

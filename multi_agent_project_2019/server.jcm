@@ -18,7 +18,7 @@ mas multi_agent_project_2019 {
 		//artifact user_artifact : multi_agent_project_2019.UserArtifact("Interface")
    }
    platform: cartago("infrastructure")
-   node servernode running @ 192.168.43.228
+   node servernode running @ localhost
 
 }
 

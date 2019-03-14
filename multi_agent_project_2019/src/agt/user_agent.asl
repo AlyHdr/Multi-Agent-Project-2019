@@ -13,7 +13,7 @@
         .print("Hello from ",Me);
 		// Creation of UserArtifcat
 		
-		joinRemoteWorkspace("city","192.168.43.228",_);
+		joinRemoteWorkspace("city","localhost",_);
 		
 		makeArtifact("user_artifact","multi_agent_project_2019.UserArtifact",["user_artifact"],Art_Id);
 		focus(Art_Id);

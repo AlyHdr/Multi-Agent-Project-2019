@@ -8,7 +8,7 @@
 	<- 	.my_name(Me);
         .print("Hello from ",Me);
         
-		joinRemoteWorkspace("city","192.168.43.228",_);
+		joinRemoteWorkspace("city","localhost",_);
 		// focus of UserArtifcat
 		focusWhenAvailable("user_artifact")
 		
