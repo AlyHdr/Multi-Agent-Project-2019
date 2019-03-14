@@ -23,9 +23,6 @@ public class Community_1 extends GUIArtifact {
 		myFrame.setVisible(true);
 		this.init();
 	}
-    /**
-     * @wbp.parser.entryPoint
-     */
     @INTERNAL_OPERATION void sendMessage(ActionEvent ev){
     	String messageContent = myFrame.getTextField_message().getText().trim();
     	System.out.println("Sending message...asd "+messageContent);
@@ -40,7 +37,7 @@ public class Community_1 extends GUIArtifact {
 		}
 
 		private void initComponents() {
-			getContentPane().setLayout(new FlowLayout());
+			this.setLayout(new FlowLayout());
 			setSize(300,300);
 			add(new JLabel("Type message:"));
 			textField_message = new JTextField(20);

@@ -2,31 +2,13 @@
 
 /* Initial beliefs and rules */
 
-!setup.
 /* Initial goals */
-+!setup : true
-	<- 	.my_name(Me);
-        .print("Hello from ",Me);
-        
-		joinRemoteWorkspace("city","localhost",_);
-		// focus of UserArtifcat
-		focusWhenAvailable("user_artifact")
-		
-		println("ready");
-		.
-		
--!setup 
-	<- 	.wait(1000);
-		.println("Problem in Setup");
-		!setup.
 
-+cmdSendTweet(MessageContent,ArtifactName)
-	<- 	.println("Sending message to ",ArtifactName," with content ",MessageContent).
+!start.
 
-+cmdFocus2(CommunityName)
-	<- 
-	focusWhenAvailable(CommunityName)
-        println("ready");.
+/* Plans */
+
++!start : true <- .print("hello world.").
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }
