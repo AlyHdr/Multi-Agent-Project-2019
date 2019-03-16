@@ -19,12 +19,14 @@ import cartago.tools.GUIArtifact;
 public class ServerArtifact extends GUIArtifact{
 	private Frame frame;
 	private ArrayList<Community> communities; 
+	private ArrayList<Mailbox> mailboxes;
 	public void init(String title) {
 		frame = new Frame();
 		frame.setTitle(title);
 		frame.setVisible(true);
 		communities = new ArrayList<>();
-		communities.add(new Community("Ali", "my community", "Community_1"));
+		
+		mailboxes = new ArrayList<>();
 		this.init();
 	}
 
@@ -33,7 +35,10 @@ public class ServerArtifact extends GUIArtifact{
 		communities.add(new Community(ownerName,communityName, communityType));
 		
 		frame.text_area.append("New community created..\n");
-		frame.text_area.append(communities.toString());
+		
+		if(communityType.equals("Community_1")) {
+			mailboxes.add(new Mailbox(ownerName));
+		}
 	}
 	@OPERATION
 	void joinCommunityOnServer(String communityName,String memberName) {
@@ -55,12 +60,6 @@ public class ServerArtifact extends GUIArtifact{
 			}
 		}
 		communities.remove(count-1);
-		/*if(communities.get(count-1).getOwnerName().equals(ownerName)) {
-			communities.remove(count);
-		}else {
-			// can't happen since user can delete only his communities
-			System.out.println("Not owner can't delete");
-		}*/
 		
 		frame.text_area.append("Joined community..\n");
 	}
@@ -87,6 +86,52 @@ public class ServerArtifact extends GUIArtifact{
 		res.set(result);
 		//System.out.println("Getting communitities...");
 
+	}
+	@OPERATION
+	void getMembers(OpFeedbackParam<String> res,String communityName){
+		
+		String result="";
+		for(Community community:communities) {
+
+			if(community.getCommunityName().equals(communityName.trim())) {
+				
+				for(String member:community.getMembers()) {
+					result+=member+",";
+				}
+			}
+		}
+		res.set(result);
+		//System.out.println("Getting communitities...");
+
+	}
+
+	@OPERATION
+	void getMessages(OpFeedbackParam<String> res,String agentName){
+		
+		String result="";
+		for (int i = 0; i < mailboxes.size(); i++) {
+			if(mailboxes.get(i).getOwner().equals(agentName)) {
+				for (int j = 0; j < mailboxes.get(i).getMessages().size(); j++) {
+					result+= mailboxes.get(i).getMessages().get(j)+",";
+				}
+			}
+		}
+		System.out.println("the result:"+result);
+		res.set(result);
+		//System.out.println("Getting communitities...");
+
+	}
+	@OPERATION
+	void upMailBox(String messageContent,String sender,String reciever){
+		
+
+		for (Mailbox mailbox:mailboxes) {
+			if(mailbox.getOwner().equals(reciever)) {
+
+				String mess = "Sender: "+sender+"\n"+"Content: "+messageContent;
+				mailbox.getMessages().add(mess);
+			}
+		}
 	}
 	private class Frame extends JFrame{
 		JTextArea text_area;

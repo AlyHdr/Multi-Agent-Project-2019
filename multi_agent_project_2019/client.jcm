@@ -4,22 +4,22 @@ mas client{
 	agent user_agent {
 		focus : my_communities.user_artifact
 	}
+
 	
-	
-	agent ali_agent : agent_1.asl {
+	agent mailAgent : agent_1.asl {
 		
 	}
-	agent othmane_agent : agent_2.asl {
+	/*agent othmane_agent : agent_2.asl {
 				
 	}
 	
 	agent new_agent : agent_3.asl {
 				
-	}
+	}*/
 	workspace my_communities {
 		artifact user_artifact : multi_agent_project_2019.UserArtifact("user")
 		//debug
 	}
   // change localhost to the IP of the machine where the server is launched
-  node servernode running @ localhost
+  node servernode running @ 192.168.43.228
 }

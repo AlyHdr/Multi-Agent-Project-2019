@@ -2,57 +2,52 @@
 
 package multi_agent_project_2019;
 
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+
 
 import cartago.*;
 import cartago.tools.GUIArtifact;
 
 public class Community_1 extends GUIArtifact {
-	private Frame myFrame;
+	private MailboxFrame myFrame;
+	private ArrayList<String> myMembers;
 	void init(String title) {
-		myFrame = new Frame();
+		myFrame = new MailboxFrame();
 		myFrame.setTitle(title);
-		linkActionEventToOp(myFrame.getBtn_send(),"sendMessage");
+		linkActionEventToOp(myFrame.getBtn_send_message(),"sendMessage");
 		
 		myFrame.setVisible(true);
+		myMembers = new ArrayList<>();
 		this.init();
 	}
     @INTERNAL_OPERATION void sendMessage(ActionEvent ev){
-    	String messageContent = myFrame.getTextField_message().getText().trim();
-    	System.out.println("Sending message...asd "+messageContent);
-    	String agent_name = "test_agent";
-    	this.signal("cmdSendMessage",messageContent,agent_name);
+    	String messageContent = myFrame.getText_area_message_content().getText().trim();
+    	String reciever = (String)myFrame.getCombo_recievers_names().getSelectedItem();
+    	this.signal("cmdSendMessage",messageContent,reciever);
     }
-	private class Frame extends JFrame{
-		JTextField textField_message;
-		JButton btn_send;
-		public Frame() {
-			initComponents();
-		}
+    @OPERATION
+    void updateMembers(String message) {
 
-		private void initComponents() {
-			this.setLayout(new FlowLayout());
-			setSize(300,300);
-			add(new JLabel("Type message:"));
-			textField_message = new JTextField(20);
-			btn_send = new JButton("Send Message");
-			add(textField_message);
-			add(btn_send);
-			setDefaultCloseOperation(EXIT_ON_CLOSE);
-			setLocationRelativeTo(null);
+    	String members[] = message.split(",");
+    	myMembers = new ArrayList<>();
+    	myFrame.getCombo_recievers_names().removeAllItems();
+    	for (int i = 0; i < members.length; i++) {
+			myMembers.add(members[i]);
+			myFrame.getCombo_recievers_names().addItem(members[i]);
 		}
-		public JButton getBtn_send() {
-			return btn_send;
-		}
-		public JTextField getTextField_message() {
-			return textField_message;
-		}
-	}
+    	
+    }
+    @OPERATION
+    void updateMessages(String message) {
+
+    	String messages[] = message.split(",");
+    	myFrame.getText_area_messages().setText("");
+    	for (int i = 0; i < messages.length; i++) {
+    		myFrame.getText_area_messages().append(messages[i]);
+    	}
+    	
+    }
 }
 

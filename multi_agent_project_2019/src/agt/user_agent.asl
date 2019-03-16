@@ -26,7 +26,7 @@
 		.println("Problem in Setup");
 		!setup.
 
-+!update : true <- .wait(2000); 
++!update : true <-  
 				    !setup_server(Server_Id);focus(Server_Id);
 					.println("Update...");
 					getCommunities(Communities);
@@ -36,6 +36,7 @@
 					//lookupArtifact("user_artifact",User_Id);
 					//focus(User_Id);
 					updateCommunities(Communities);
+					.wait(10000);
 					!update.
 
 -!update
@@ -73,9 +74,11 @@
 		
 		joinCommunityOnServer(CommunityName,Me);
 		
-		.concat("multi_agent_project_2019.",CommunityType,Type);
-		makeArtifact(CommunityName,Type,[CommunityName],Art_Id);
+		//.concat("multi_agent_project_2019.",CommunityType,Type);
+		//makeArtifact(CommunityName,Type,[CommunityName],Art_Id);
 		
+		.send(mailAgent,tell,create_mailbox(CommunityName,CommunityType,Me));
+
 		//stopFocus(Server_Id);
 		//!setup_user(User_Id);focus(User_Id);
 		.

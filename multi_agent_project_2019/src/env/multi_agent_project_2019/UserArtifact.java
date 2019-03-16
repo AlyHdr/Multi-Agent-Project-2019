@@ -33,8 +33,6 @@ public class UserArtifact extends GUIArtifact {
     		String communityType = (String)frameUser.getCombo_create_community_type().getSelectedItem();
     		// create community and add it to the list of my communities
     		this.signal("cmd", "createCommunity",community_name,communityType);
-
-    		frameUser.getCombo_join_availble_communities().addItem(community_name);
     		frameUser.getCombo_delete_available_communities().addItem(community_name);
 
     	}else {
@@ -70,31 +68,33 @@ public class UserArtifact extends GUIArtifact {
     		
     	}
     }
-    @OPERATION
-    void updateCommunities(String message) {
-    	System.out.println(message);
-    	String communities[] = message.split(",");
-    	frameUser.getCombo_join_availble_communities().removeAllItems();
-    	for(int i=0;i<communities.length;i++) {
-    		String attrbs[] = communities[i].split("-");
-    		String comm_name = attrbs[0];
-    		String comm_type = attrbs[1];
-    		String comm_owner = attrbs[2];
-    		
-    		frameUser.getCombo_join_availble_communities().addItem(comm_name);
-    		
-    		ArrayList<String> members = new ArrayList<>();
-    		
-    		for(int j=3;j<attrbs.length;j++) {
-    			members.add(attrbs[j]);
-    		}
-    		Community comm = new Community(comm_owner, comm_name,comm_type,members);
-    		if(!my_communities.contains(comm)) {
-    			my_communities.add(comm);
-    		}
-    		//System.out.println(comm_name+" "+comm_type+" "+comm_owner);
-    	}
-    }
+
+	@OPERATION
+	void updateCommunities(String message) {
+		String communities[] = message.split(",");
+		frameUser.getCombo_join_availble_communities().removeAllItems();
+		for (int i = 0; i < communities.length; i++) {
+			String attrbs[] = communities[i].split("-");
+			if (attrbs.length >2) {
+				String comm_name = attrbs[0];
+				String comm_type = attrbs[1];
+				String comm_owner = attrbs[2];
+
+				frameUser.getCombo_join_availble_communities().addItem(comm_name);
+
+				ArrayList<String> members = new ArrayList<>();
+
+				for (int j = 3; j < attrbs.length; j++) {
+					members.add(attrbs[j]);
+				}
+				Community comm = new Community(comm_owner, comm_name, comm_type, members);
+				if (!my_communities.contains(comm)) {
+					my_communities.add(comm);
+				}
+			}
+			// System.out.println(comm_name+" "+comm_type+" "+comm_owner);
+		}
+	}
     
 }
 

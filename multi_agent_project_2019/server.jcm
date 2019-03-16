@@ -19,7 +19,7 @@ mas multi_agent_project_2019 {
 		//debug
    }
    platform: cartago("infrastructure")
-   node servernode running @localhost
+   node servernode running @ 192.168.43.228
 
 }
 
