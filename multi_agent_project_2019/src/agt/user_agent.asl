@@ -5,7 +5,7 @@
 /* Initial goals */
 
 !setup.
-
+!update.
 // Initialisation Plans
  
 +!setup : true
@@ -13,12 +13,12 @@
         .print("Hello from ",Me);
 		// Creation of UserArtifcat
 		
-		joinRemoteWorkspace("city","localhost",_);
+		//joinWorkspace("my_communities",Id);
 		
-		makeArtifact("user_artifact","multi_agent_project_2019.UserArtifact",["user_artifact"],Art_Id);
-		focus(Art_Id);
+		//makeArtifact("user_artifact","multi_agent_project_2019.UserArtifact",["user_artifact"],Art_Id);
+		//focus(Art_Id);
 		
-		println("ready");
+		//println("ready");
 		.
 		
 -!setup 
@@ -26,19 +26,88 @@
 		.println("Problem in Setup");
 		!setup.
 
-+cmd("createCommunity_1",CommunityName)
-	<- 	.println("Going to create community ",CommunityName," of type 1");
++!update : true <- .wait(2000); 
+				    !setup_server(Server_Id);focus(Server_Id);
+					.println("Update...");
+					getCommunities(Communities);
+					//stopFocus(Server_Id);
+					
+					//!setup_user(User_Id);focus(User_Id);
+					//lookupArtifact("user_artifact",User_Id);
+					//focus(User_Id);
+					updateCommunities(Communities);
+					!update.
+
+-!update
+	<- 	.wait(2000);
+		.println("Problem in update");
+		!update;
+		.
++!setup_server(Server_Id) <- joinRemoteWorkspace("city","192.168.43.228",_);
+		 lookupArtifact("server_artifact",Server_Id)[wsp("city")].
+
++!setup_user(User_Id) <- joinRemoteWorkspace("my_communities","192.168.43.228",_);
+		 lookupArtifact("user_artifact",User_Id)[wsp("my_communities")].
+	 
++cmd("createCommunity",CommunityName,CommunityType)
+	<- 
+		!setup_server(Server_Id);focus(Server_Id);
+		.my_name(Me);
 		
-		// Creation of UserArtifcat
-		makeArtifact(CommunityName,"multi_agent_project_2019.Community_1",[CommunityName],Art_Id);.
+		// Add a new community to list of communities on the server
+		
+		addCommunity(Me,CommunityName,CommunityType);
+		stopFocus(Server_Id);
+		
+		//!setup_user(User_Id);focus(User_Id);
 
-+cmd("createCommunity_2",CommunityName)
-	<- 	.println("Going to create community ",CommunityName," of type 2");
-	makeArtifact(CommunityName,"multi_agent_project_2019.Community_2",[CommunityName],Art_Id);.
-
-+cmd("createCommunity_3",CommunityName)
-	<- 	.println("Going to create community ",CommunityName," of type 3");
-	makeArtifact(CommunityName,"multi_agent_project_2019.Community_3",[CommunityName],Art_Id);.
+		.
++cmd("joinCommunity",CommunityName,CommunityType)
+	<- 
+		!setup_server(Server_Id);
+		
+		focus(Server_Id);
+		.my_name(Me);
+		
+		// Join a community from the list of communities on the server
+		
+		joinCommunityOnServer(CommunityName,Me);
+		
+		.concat("multi_agent_project_2019.",CommunityType,Type);
+		makeArtifact(CommunityName,Type,[CommunityName],Art_Id);
+		
+		//stopFocus(Server_Id);
+		//!setup_user(User_Id);focus(User_Id);
+		.
++cmd("deleteCommunity",CommunityName)
+	<- 
+		!setup_server(Server_Id);
+		
+		focus(Server_Id);
+		.my_name(Me);
+		
+		// delete a community from the list of communities on the server
+		
+		deleteCommunityOnServer(CommunityName);
+		
+		//stopFocus(Server_Id);
+		//!setup_user(User_Id);focus(User_Id);
+		.
+		
++cmd("leaveCommunity",CommunityName)
+	<- 
+		!setup_server(Server_Id);
+		
+		focus(Server_Id);
+		.my_name(Me);
+		
+		// Join a community from the list of communities on the server
+		
+		leaveCommunityOnServer(CommunityName)
+		
+		//stopFocus(Server_Id);
+		//!setup_user(User_Id);focus(User_Id);
+		.
 
 
 { include("$jacamoJar/templates/common-cartago.asl") }

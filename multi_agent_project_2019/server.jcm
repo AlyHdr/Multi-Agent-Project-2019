@@ -15,7 +15,8 @@ mas multi_agent_project_2019 {
 
 	
 	workspace city {
-		//artifact user_artifact : multi_agent_project_2019.UserArtifact("Interface")
+		artifact server_artifact : multi_agent_project_2019.ServerArtifact("server")
+		//debug
    }
    platform: cartago("infrastructure")
    node servernode running @localhost
