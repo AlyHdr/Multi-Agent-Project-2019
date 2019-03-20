@@ -3,7 +3,6 @@
 /* Initial beliefs and rules */
 
 /* Initial goals */
-
 !setup.
 !update.
 // Initialisation Plans
@@ -20,7 +19,6 @@
 		
 		//println("ready");
 		.
-		
 -!setup 
 	<- 	.wait(1000);
 		.println("Problem in Setup");
@@ -44,10 +42,10 @@
 		.println("Problem in update");
 		!update;
 		.
-+!setup_server(Server_Id) <- joinRemoteWorkspace("city","192.168.43.228",_);
++!setup_server(Server_Id) <- joinRemoteWorkspace("city","127.0.0.1",_);
 		 lookupArtifact("server_artifact",Server_Id)[wsp("city")].
 
-+!setup_user(User_Id) <- joinRemoteWorkspace("my_communities","192.168.43.228",_);
++!setup_user(User_Id) <- joinRemoteWorkspace("my_communities","127.0.0.1",_);
 		 lookupArtifact("user_artifact",User_Id)[wsp("my_communities")].
 	 
 +cmd("createCommunity",CommunityName,CommunityType)
@@ -78,6 +76,7 @@
 		//makeArtifact(CommunityName,Type,[CommunityName],Art_Id);
 		
 		.send(mailAgent,tell,create_mailbox(CommunityName,CommunityType,Me));
+		.send(agentThree, tell, create_forum(CommunityName, CommunityType, Me));
 
 		//stopFocus(Server_Id);
 		//!setup_user(User_Id);focus(User_Id);

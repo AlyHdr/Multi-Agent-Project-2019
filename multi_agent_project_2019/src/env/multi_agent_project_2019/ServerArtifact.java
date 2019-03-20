@@ -132,7 +132,15 @@ public class ServerArtifact extends GUIArtifact{
 				mailbox.getMessages().add(mess);
 			}
 		}
+	}	
+	
+	@OPERATION
+	void startForum(String topic,String post, String owner){
+		
+
+
 	}
+	
 	private class Frame extends JFrame{
 		JTextArea text_area;
 		public Frame() {

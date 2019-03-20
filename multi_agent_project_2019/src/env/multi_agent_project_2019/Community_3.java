@@ -4,6 +4,7 @@ package multi_agent_project_2019;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,59 +17,47 @@ import cartago.tools.GUIArtifact;
 
 
 public class Community_3 extends GUIArtifact {
-	private Frame myFrame;
+	private ForumFrame myFrame;
+	private ArrayList<String> myMembers;
 	void init(String title) {
-		myFrame = new Frame();
+		myFrame = new ForumFrame();
 		myFrame.setTitle(title);
-		linkActionEventToOp(myFrame.getBtn_send(),"postForum");
+		linkActionEventToOp(myFrame.btnPost(),"startForum");
 		
 		myFrame.setVisible(true);
+		myMembers = new ArrayList<>();
 		this.init();
 	}
 	
-    @INTERNAL_OPERATION void postForum(ActionEvent ev){
-    	String forumTopic = myFrame.getTopic().getText().trim();
-    	String forumContent = myFrame.getContent().getText().trim();
-    	System.out.println("Sending message...asd "+forumContent);
-//    	String agent_name = "test_agent";
-    	this.signal("cmdPostForum",forumTopic, forumContent);
-    }
-    
-	private class Frame extends JFrame{
-		JTextField textFiled_topic;
-		JTextArea textArea_content;
-		JButton btn_submit;
-		public Frame() {
-			initComponents();
-		}
+    @INTERNAL_OPERATION void startForum(ActionEvent ev){
+    	String forumTopic = myFrame.getTopicContent().getText().trim();
+    	String forumContent = myFrame.getPostContent().getText().trim();
+//    	System.out.println("Sending message...asd "+forumContent);
 
-		private void initComponents() {
-			this.setLayout(new FlowLayout());
-			setSize(300,400);
-			add(new JLabel("Type topic:"));
-			textFiled_topic = new JTextField(20);
-			add(textFiled_topic);
-			add(new JLabel("Type content:"));
-			textArea_content = new JTextArea();
-			textArea_content.setColumns(10);
-			textArea_content.setRows(5);
-			add(textArea_content);
-			
-			btn_submit = new JButton("Post");
-			add(btn_submit);
-			setDefaultCloseOperation(EXIT_ON_CLOSE);
-			setLocationRelativeTo(null);
+    	this.signal("cmdStartForum",forumTopic, forumContent);
+    }
+
+    @OPERATION
+    void updateMembers(String message) {
+
+    	String members[] = message.split(",");
+    	myMembers = new ArrayList<>();
+    	for (int i = 0; i < members.length; i++) {
+			myMembers.add(members[i]);
 		}
-		
-		public JButton getBtn_send() {
-			return btn_submit;
-		}
-		public JTextField getTopic() {
-			return textFiled_topic;
-		}
-		public JTextArea getContent() {
-			return textArea_content;
-		}
-	}
+    	
+    }
+    @OPERATION
+    void updateMessages(String message) {
+
+    	String messages[] = message.split(",");
+    	myFrame.getText_area_messages().setText("");
+    	for (int i = 0; i < messages.length; i++) {
+    		myFrame.getText_area_messages().append(messages[i]);
+    	}
+    	
+    }
+	
+	
 }
 
