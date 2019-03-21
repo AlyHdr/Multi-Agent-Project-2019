@@ -176,3 +176,6 @@ public class MailboxFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea text_area_messages;
     // End of variables declaration//GEN-END:variables
 }
+
+
+

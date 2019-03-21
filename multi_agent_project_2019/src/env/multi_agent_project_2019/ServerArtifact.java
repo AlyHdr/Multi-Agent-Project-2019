@@ -20,6 +20,7 @@ public class ServerArtifact extends GUIArtifact{
 	private Frame frame;
 	private ArrayList<Community> communities; 
 	private ArrayList<Mailbox> mailboxes;
+	private ArrayList<Twitter> twitters;
 	public void init(String title) {
 		frame = new Frame();
 		frame.setTitle(title);
@@ -27,6 +28,7 @@ public class ServerArtifact extends GUIArtifact{
 		communities = new ArrayList<>();
 		
 		mailboxes = new ArrayList<>();
+		twitters = new ArrayList<>();
 		this.init();
 	}
 
@@ -38,6 +40,10 @@ public class ServerArtifact extends GUIArtifact{
 		
 		if(communityType.equals("Community_1")) {
 			mailboxes.add(new Mailbox(ownerName));
+		}
+		
+		if(communityType.equals("Community_2")) {
+			twitters.add(new Twitter(ownerName));
 		}
 	}
 	@OPERATION
@@ -121,6 +127,26 @@ public class ServerArtifact extends GUIArtifact{
 		//System.out.println("Getting communitities...");
 
 	}
+	
+	@OPERATION
+	void getTweets(OpFeedbackParam<String> res,String agentName){
+		
+		String result="";
+		for (int i = 0; i < twitters.size(); i++) {
+			if(twitters.get(i).getOwner().equals(agentName)) {
+				for (int j = 0; j < twitters.get(i).getTwitter().size(); j++) {
+					result+= twitters.get(i).getTwitter().get(j)+",";
+				}
+			}
+		}
+		System.out.println("the result:"+result);
+		res.set(result);
+		//System.out.println("Getting communitities...");
+
+	}
+	
+	
+	
 	@OPERATION
 	void upMailBox(String messageContent,String sender,String reciever){
 		
@@ -133,6 +159,22 @@ public class ServerArtifact extends GUIArtifact{
 			}
 		}
 	}	
+	
+	
+	@OPERATION
+	void upTwitter(String tweetContent,String sender,String reciever){
+		
+
+		for (Twitter twitter:twitters) {
+			if(twitter.getOwner().equals(reciever)) {
+
+				String twt = "Sender: "+sender+"\n"+"Content: "+tweetContent;
+				twitter.getTwitter().add(twt);
+			}
+		}
+	}	
+	
+	
 	
 	@OPERATION
 	void startForum(String topic,String post, String owner){
