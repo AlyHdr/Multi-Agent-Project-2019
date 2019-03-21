@@ -75,9 +75,10 @@
 		//.concat("multi_agent_project_2019.",CommunityType,Type);
 		//makeArtifact(CommunityName,Type,[CommunityName],Art_Id);
 		
-		.send(mailAgent,tell,create_mailbox(CommunityName,CommunityType,Me));
-		.send(agentThree, tell, create_forum(CommunityName, CommunityType, Me));
-
+		//.send(mailAgent,tell,create_mailbox(CommunityName,CommunityType,Me));
+		//.send(agentThree, tell, create_forum(CommunityName, CommunityType, Me));
+        .send(othmane_agent, tell, create_twitter(CommunityName, CommunityType, Me));
+         
 		//stopFocus(Server_Id);
 		//!setup_user(User_Id);focus(User_Id);
 		.

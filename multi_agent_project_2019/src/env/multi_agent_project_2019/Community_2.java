@@ -1,64 +1,53 @@
 // CArtAgO artifact code for project multi_agent_project_2019
+
 package multi_agent_project_2019;
 
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+
 
 import cartago.*;
 import cartago.tools.GUIArtifact;
-//import multi_agent_project_2019.Community_1.Frame2;
 
 public class Community_2 extends GUIArtifact {
-	private Frame2 myFrame2;
+	private TwitterFrame myFrame;
+	private ArrayList<String> myMembers;
 	void init(String title) {
-		myFrame2 = new Frame2();
-		myFrame2.setTitle(title);
-		linkActionEventToOp(myFrame2.getBtn_tweet(),"sendTweet");
+		myFrame = new TwitterFrame();
+		myFrame.setTitle(title);
+		linkActionEventToOp(myFrame.getBtn_send_tweets(),"sendTweet");
 		
-		myFrame2.setVisible(true);
+		myFrame.setVisible(true);
+		myMembers = new ArrayList<>();
 		this.init();
 	}
-    /**
-     * @wbp.parser.entryPoint
-     */
-    @INTERNAL_OPERATION void sendTweet(ActionEvent ev){
-    	String tweetContent = myFrame2.getTextField_message().getText().trim();
-    	System.out.println("Sending tweet... "+tweetContent);
-    	String agent_name = "test_agent";
-    	this.signal("cmdSendTweet",tweetContent,agent_name);
+    @INTERNAL_OPERATION void sendMessage(ActionEvent ev){
+    	String tweetContent = myFrame.getText_area_tweet_content().getText().trim();
+    	String reciever = (String)myFrame.getCombo_recievers_names().getSelectedItem();
+    	this.signal("cmdSendTweet",tweetContent,reciever);
     }
-	private class Frame2 extends JFrame{
-		JTextArea textField_tweet;
-		JButton btn_tweet;
-		public Frame2() {
-			initComponents();
-		}
+    @OPERATION
+    void updateMembers(String tweet) {
 
-		private void initComponents() {
-			getContentPane().setLayout(new FlowLayout());
-			setSize(450,500);
-			add(new JLabel("Type your tweet:"));
-			textField_tweet = new JTextArea();
-			textField_tweet.setColumns(10);
-			textField_tweet.setRows(5);
-			btn_tweet = new JButton("Send tweet");
-			//btn_tweet.setBounds(60, 200, 220, 30);
-			add(textField_tweet);
-			add(btn_tweet);
-			setDefaultCloseOperation(EXIT_ON_CLOSE);
-			setLocationRelativeTo(null);
+    	String members[] = tweet.split(",");
+    	myMembers = new ArrayList<>();
+    	myFrame.getCombo_recievers_names().removeAllItems();
+    	for (int i = 0; i < members.length; i++) {
+			myMembers.add(members[i]);
+			myFrame.getCombo_recievers_names().addItem(members[i]);
 		}
-		public JButton getBtn_tweet() {
-			return btn_tweet;
-		}
-		public JTextArea getTextField_message() {
-			return textField_tweet;
-		}
-	}
+    	
+    }
+    @OPERATION
+    void updateTweets(String tweet) {
+
+    	String tweets[] = tweet.split(",");
+    	myFrame.getText_area_tweets().setText("");
+    	for (int i = 0; i < tweets.length; i++) {
+    		myFrame.getText_area_tweets().append(tweets[i]);
+    	}
+    	
+    }
 }
+

@@ -1,32 +1,64 @@
-// Agent agent_2 in project multi_agent_project_2019
+// Agent agent_1 in project multi_agent_project_2019
 
 /* Initial beliefs and rules */
 
 !setup.
+
 /* Initial goals */
+
+
+
 +!setup : true
 	<- 	.my_name(Me);
         .print("Hello from ",Me);
         
-		joinRemoteWorkspace("city","localhost",_);
+		joinWorkspace("my_communities",_);
 		// focus of UserArtifcat
-		focusWhenAvailable("user_artifact")
+		//focusWhenAvailable("user_artifact")
 		
-		println("ready");
+		println("ready", Me);
 		.
 		
 -!setup 
 	<- 	.wait(1000);
 		.println("Problem in Setup");
 		!setup.
+		
++!update(CommunityName,OwnerName) : true <-  
+				    !setup_server(Server_Id);focus(Server_Id);
 
-+cmdSendTweet(MessageContent,ArtifactName)
-	<- 	.println("Sending message to ",ArtifactName," with content ",MessageContent).
+					getTweets(Tweets,OwnerName);
+					
+					updateTweets(Tweets);
+					
+					getMembers(Members,CommunityName);
+					updateMembers(Members);
+					.wait(10000);
+					!update(CommunityName,OwnerName).
 
-+cmdFocus2(CommunityName)
-	<- 
-	focusWhenAvailable(CommunityName)
-        println("ready");.
+-!update(CommunityName,OwnerName)
+	<- 	.wait(2000);
+		.println("Problem in update");
+		!update(CommunityName).
+
+
++!setup_server(Server_Id) <- joinRemoteWorkspace("city","l27.0.0.1",_);
+		 lookupArtifact("server_artifact",Server_Id)[wsp("city")].	
+
++create_twitter(CommunityName,CommunityType,OwnerName) : true <-
+		.concat("multi_agent_project_2019.",CommunityType,Type);
+		makeArtifact(CommunityName,Type,[CommunityName],Art_Id)
+		focus(Art_Id);
+		!update(CommunityName,OwnerName);
+	 .
+	 
++cmdSendTweet(TweetContent,Reciever)
+	<- 	!setup_server(Server_Id);focus(Server_Id);
+		.my_name(Sender);
+	
+		upTwitter(TweetContent,Sender,Reciever);
+		.
+
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }

@@ -9,13 +9,13 @@ mas client{
 	agent mailAgent : agent_1.asl {
 		
 	}
-	/*agent othmane_agent : agent_2.asl {
+	//agent othmane_agent : agent_2.asl {
 				
-	}
-	*/
-	agent agentThree : agent_3.asl {
+	//}
+	
+	//agent agentThree : agent_3.asl {
 				
-	}
+	//}
 	workspace my_communities {
 		artifact user_artifact : multi_agent_project_2019.UserArtifact("user")
 		//debug
