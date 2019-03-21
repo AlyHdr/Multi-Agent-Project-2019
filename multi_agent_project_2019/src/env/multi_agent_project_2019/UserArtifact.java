@@ -42,7 +42,13 @@ public class UserArtifact extends GUIArtifact {
     @INTERNAL_OPERATION void joinCommunity(ActionEvent ev){
     	int selected = frameUser.getCombo_join_availble_communities().getSelectedIndex();
     	Community comm = my_communities.get(selected);
-    	this.signal("cmd", "joinCommunity",comm.getCommunityName(),comm.getCommunityType());
+    	if(comm.getCommunityType().equals("Community_1")) {
+    		this.signal("cmd", "joinCommunity1",comm.getCommunityName(),comm.getCommunityType());
+    	}else if(comm.getCommunityType().equals("Community_2")) {
+    		this.signal("cmd", "joinCommunity2",comm.getCommunityName(),comm.getCommunityType());
+    	}else if(comm.getCommunityType().equals("Community_3")) {
+    		this.signal("cmd", "joinCommunity3",comm.getCommunityName(),comm.getCommunityType());	
+    	}
     	frameUser.getCombo_leave_availble_communties().addItem(comm.getCommunityName());
     }
     @INTERNAL_OPERATION void leaveCommunity(ActionEvent ev){

@@ -42,7 +42,7 @@
 		!update(CommunityName).
 
 
-+!setup_server(Server_Id) <- joinRemoteWorkspace("city","192.168.43.228",_);
++!setup_server(Server_Id) <- joinRemoteWorkspace("city","127.0.0.1",_);
 		 lookupArtifact("server_artifact",Server_Id)[wsp("city")].	
 
 +create_mailbox(CommunityName,CommunityType,OwnerName) : true <-

@@ -61,7 +61,7 @@
 		//!setup_user(User_Id);focus(User_Id);
 
 		.
-+cmd("joinCommunity",CommunityName,CommunityType)
++cmd("joinCommunity1",CommunityName,CommunityType)
 	<- 
 		!setup_server(Server_Id);
 		
@@ -72,16 +72,40 @@
 		
 		joinCommunityOnServer(CommunityName,Me);
 		
-		//.concat("multi_agent_project_2019.",CommunityType,Type);
-		//makeArtifact(CommunityName,Type,[CommunityName],Art_Id);
+		.send(mailAgent,tell,create_mailbox(CommunityName,CommunityType,Me));
+		//.send(agentThree, tell, create_forum(CommunityName, CommunityType, Me));
+        //.send(othmane_agent, tell, create_twitter(CommunityName, CommunityType, Me));
+        .
++cmd("joinCommunity2",CommunityName,CommunityType)
+	<- 
+		!setup_server(Server_Id);
+		
+		focus(Server_Id);
+		.my_name(Me);
+		
+		// Join a community from the list of communities on the server
+		
+		joinCommunityOnServer(CommunityName,Me);
 		
 		//.send(mailAgent,tell,create_mailbox(CommunityName,CommunityType,Me));
 		//.send(agentThree, tell, create_forum(CommunityName, CommunityType, Me));
         .send(othmane_agent, tell, create_twitter(CommunityName, CommunityType, Me));
-         
-		//stopFocus(Server_Id);
-		//!setup_user(User_Id);focus(User_Id);
-		.
+        .
++cmd("joinCommunity3",CommunityName,CommunityType)
+	<- 
+		!setup_server(Server_Id);
+		
+		focus(Server_Id);
+		.my_name(Me);
+		
+		// Join a community from the list of communities on the server
+		
+		joinCommunityOnServer(CommunityName,Me);
+		
+		//.send(mailAgent,tell,create_mailbox(CommunityName,CommunityType,Me));
+		.send(agentThree, tell, create_forum(CommunityName, CommunityType, Me));
+        //.send(othmane_agent, tell, create_twitter(CommunityName, CommunityType, Me));
+        .
 +cmd("deleteCommunity",CommunityName)
 	<- 
 		!setup_server(Server_Id);
