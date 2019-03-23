@@ -55,7 +55,7 @@
 +cmdStartForum(forumTopic,forumPost)
 	<- 	!setup_server(Server_Id);focus(Server_Id);
 		.my_name(owner);	
-		startForum(forumTopic,forumPost,owner).
+		startForum(owner, forumTopic,forumPost).
 
 
 { include("$jacamoJar/templates/common-cartago.asl") }

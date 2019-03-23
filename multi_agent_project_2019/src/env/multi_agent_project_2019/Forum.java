@@ -1,31 +1,46 @@
 package multi_agent_project_2019;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Forum {
 	private String owner;
 	private String topic;
-	private ArrayList<String> posts;
+	private static ArrayList<ForumPost> posts;
+	
 	public Forum(String owner){
 		this.owner = owner;
-		this.topic = "";
-		posts = new ArrayList<>();
+	}
+	public Forum(String owner, String topic){
+		this.owner = owner;
+		this.topic = topic;
 	}
 	public String getOwner() {
 		return owner;
 	}
-	private void createForum(String topic, String post) {
-		this.topic = topic;
-		posts.add(post);
+	public void setOwner(String owner) {
+		this.owner = owner;
 	}
-	private void addPost(String post) {
-		posts.add(post);
-	}
-	
-	private String getTopic() {
+
+	public String getTopic() {
 		return topic;
 	}
-	public ArrayList<String> getPosts() {
+	public void setTopic(String topic) {
+		this.topic = topic;
+	}
+	
+	public void createForum(String owner, String topic, ForumPost post) {
+		this.topic = topic;
+		this.owner = owner;
+		Forum.posts.add(post);
+	}
+	
+	public void addComment(ForumPost post) {
+		Forum.posts.add(post);
+	}
+	
+
+	public ArrayList<ForumPost> getPosts() {
 		return posts;
 	}
 }

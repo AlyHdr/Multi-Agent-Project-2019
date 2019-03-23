@@ -21,6 +21,8 @@ public class ServerArtifact extends GUIArtifact{
 	private ArrayList<Community> communities; 
 	private ArrayList<Mailbox> mailboxes;
 	private ArrayList<Twitter> twitters;
+	private String forumTopic;
+	private Forum forum;
 	public void init(String title) {
 		frame = new Frame();
 		frame.setTitle(title);
@@ -41,9 +43,12 @@ public class ServerArtifact extends GUIArtifact{
 		if(communityType.equals("Community_1")) {
 			mailboxes.add(new Mailbox(ownerName));
 		}
-		
+
 		if(communityType.equals("Community_2")) {
 			twitters.add(new Twitter(ownerName));
+		}
+		if(communityType.equals("Community_3")) {
+			forum.setOwner(ownerName);
 		}
 	}
 	@OPERATION
@@ -172,14 +177,19 @@ public class ServerArtifact extends GUIArtifact{
 				twitter.getTwitter().add(twt);
 			}
 		}
-	}	
-	
-	
+	}		
+
+	@OPERATION
+	void startForum(String owner, String topic, String post){
+		forum.setOwner(owner);
+		forum.setTopic(topic);
+		forum.createForum(owner, topic, new ForumPost(owner, post));
+
+	}
 	
 	@OPERATION
-	void startForum(String topic,String post, String owner){
+	void commentForum(String post, String author){
 		
-
 
 	}
 	
