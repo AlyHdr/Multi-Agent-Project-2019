@@ -19,11 +19,25 @@ In this section, a low level description of our system is demonstrated where eac
 Our system is composed of three main parts:  
 * **Community Server** : The core of the system where all the data about *(communities , members and every item related to them)* is stored. For now the server have a runtime capability to store these information in structured lists and objects.A **server artifact** have been implemented to allow the agents interact with the information stored on the server where they have permissions and operations to (edit/delete/add stufff).
 * **User agent/artifact** : The user agent was designed to have a repeated update according to an *interval* time to maintain the new added members to community and update back the *user artifact*, it also serves the tasks associated by the user from the *user artifact* and accomplish these tasks.
-* **Assistant agents** : Also keep updates from the server to get it back to the *artifact* associated to it by the **user agent**.Never to forget it's main task which is to accomplish the missions provided by the artifact and act according to the *way* it was implemented.
+* **Assistant agents** : Also keep updates from the server to get it back to the *artifact* associated to it by the **user agent**.Never to forget its main task which is to accomplish the missions provided by the artifact and act according to the *way* it was implemented.
 
-![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/arch_1.png =400x300 "Architecture of the system from a global point of view")
+![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/arch_1.png "Architecture of the system from a global point of view")
 
 ### ii.User Control
+The user control is based on two things but before going into it's details, we need to specify the specification of the problem and why this choice have been chosen. In our system a user can have many communities (i.e own many) of three different types, and also he can at any time delete one of those communities and consequently removing all the members.He can join or leave a community not only others communities but also he can join his own community and participate and act on it.For these tasks mentioned before a **user_agent** was designed to server them accompanied with the help of a **user_artifact** to show the user a nice interface of what is going on.  
+
+* **user_agent** : This agent had a set of initial goals:
+    * Look for the user_artifact and focus on it.  
+    * Update the user_artifact which makes the agent go get the list of communities from the server_artifact and come update back.
+    After that the agent will be listening from incoming signals from the artifact to do either of those goals:  
+    * *Create community* to add the community on the server by using a **server_artifact** operation.  
+    * *Delete community* to delete the community and all its members from the list of avaiblable communities using a**server_artifact** operation.  
+    * *Join community* which sends to a specific agent according to the *community type* a message to make the artifact.  
+* **user_artifact** : It was a GUIArtifact which provides the user with a simple interface to manage the permissions that he allowed to do regarding communities.Events of buttons of the interface where attached to the artifact as so we can handle all the events as **internal operations** within the artifact.  
+Internal operations:  
+* Create community : whenever the user types the community name and chooses the community type and presses the button to create a signal is sent to the *user_agent* triggering it with the goal to create a community and accomplish what have been described above.  
+* Join/Leave/Delete community: the user chooses a community from either combo boxes and press the desired button , then the same logic happens as in create community.
+![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/user_artifact.png "Figure to show the interface linked to the explanation above")
 ### iii.Agents Specification
 #### Agent 1
 #### Agent 2
