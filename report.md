@@ -37,7 +37,7 @@ The user control is based on two things but before going into it's details, we n
 Internal operations:  
 * Create community : whenever the user types the community name and chooses the community type and presses the button to create a signal is sent to the *user_agent* triggering it with the goal to create a community and accomplish what have been described above.  
 * Join/Leave/Delete community: the user chooses a community from either combo boxes and press the desired button , then the same logic happens as in create community.
-![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/user_artifact.png "Figure to show the interface linked to the explanation above")
+![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/user_artifact.jpg "Figure to show the interface linked to the explanation above")
 ### iii.Agents Specification
 #### Agent 1
 #### Agent 2
