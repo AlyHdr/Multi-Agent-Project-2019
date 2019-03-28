@@ -1,10 +1,10 @@
 # Multi-Agent-Project-2019
-**Course**:Multi-Agent Object Programming.
+**Course**:Multi-Agent Object Programming.  
+**Supervisor**:Pr. Olivier Boissier.  
 **Members**:
 * HAIDAR Ali
 * RANCHA GODAGE Malshani
 * BELLAGH Othmane
-**Supervisor**:Pr. Olivier Boissier
 
 ## 1. Introduction
 
