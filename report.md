@@ -35,16 +35,25 @@ The user control is based on two things but before going into it's details, we n
     * *Join community* which sends to a specific agent according to the *community type* a message to make the artifact.  
 * **user_artifact** : It was a GUIArtifact which provides the user with a simple interface to manage the permissions that he allowed to do regarding communities.Events of buttons of the interface where attached to the artifact as so we can handle all the events as **internal operations** within the artifact.  
 Internal operations:  
-* Create community : whenever the user types the community name and chooses the community type and presses the button to create a signal is sent to the *user_agent* triggering it with the goal to create a community and accomplish what have been described above.  
-* Join/Leave/Delete community: the user chooses a community from either combo boxes and press the desired button , then the same logic happens as in create community.
+   * Create community : whenever the user types the community name and chooses the community type and presses the button to create a signal is sent to the *user_agent* triggering it with the goal to create a community and accomplish what have been described above.  
+   * Join/Leave/Delete community: the user chooses a community from either combo boxes and press the desired button , then the same logic happens as in create community.
 ![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/user_artifact.jpg "Figure to show the interface linked to the explanation above")
 ### iii.Agents Specification
 #### Agent 1
+This agent was designed to focus on a *mail_box* artifact inorder to accomplish the tasks to be done a community to serve messages between agents.First the agent will be listening until the user_agent sends it an achieve goal message which is to create the *mailbox_artifact* and focus on it to start percepting new goals.The agent is responsible of:
+* Update Members: whenever the artifact is created an update scenario is triggered which is a repeated process done by the agent to get the new members of the community from the server and add them to the list of available members in the *mailbox_artifact*.
+* Update Mailbox: each user have a mailbox in this community but all the messages are stored on the server, so that the agent have to keep also an update on the recieved messages.It contacts the server each *interval* of time and get the new messages to update the interface.(i.e no direct interaction between agents, it's like a client/server chat application).
+* Send Message: Whenever the user writes a message the and chooses the reciever who will be for sure a member of the community, the agent go add the new message to the mailbox of the reciever on the server.
+![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/mail_box.PNG )
+
+In this picture the user joined the community that he created and sent himself a message and that is possible in our design.
 #### Agent 2
+
 #### Agent 3
 
 ### iv.Artifacts Specification
-#### Artifact 1
+#### MailBox Artifact
+
 #### Artifact 2
 #### Artifact 3
 
