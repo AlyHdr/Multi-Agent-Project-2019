@@ -21,7 +21,7 @@ Our system is composed of three main parts:
 * **User agent/artifact** : The user agent was designed to have a repeated update according to an *interval* time to maintain the new added members to community and update back the *user artifact*, it also serves the tasks associated by the user from the *user artifact* and accomplish these tasks.
 * **Assistant agents** : Also keep updates from the server to get it back to the *artifact* associated to it by the **user agent**.Never to forget it's main task which is to accomplish the missions provided by the artifact and act according to the *way* it was implemented.
 
-![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/arch_1.png "Architecture of the system from a global point of view")
+![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/arch_1.png =400x300 "Architecture of the system from a global point of view")
 
 ### ii.User Control
 ### iii.Agents Specification
