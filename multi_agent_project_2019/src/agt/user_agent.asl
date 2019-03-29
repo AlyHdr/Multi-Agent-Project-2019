@@ -72,7 +72,7 @@
 		
 		joinCommunityOnServer(CommunityName,Me);
 		
-		.send(mailAgent,tell,create_mailbox(CommunityName,CommunityType,Me));
+		.send(mailAgent,tell, create_mailbox(CommunityName,CommunityType,Me));
 		//.send(agentThree, tell, create_forum(CommunityName, CommunityType, Me));
         //.send(othmane_agent, tell, create_twitter(CommunityName, CommunityType, Me));
         .

@@ -1,4 +1,4 @@
-// Agent agent_1 in project multi_agent_project_2019
+// Agent agent_2 in project multi_agent_project_2019
 
 /* Initial beliefs and rules */
 
@@ -16,7 +16,7 @@
 		// focus of UserArtifcat
 		//focusWhenAvailable("user_artifact")
 		
-		println("ready", Me);
+		println("ready");
 		.
 		
 -!setup 
@@ -27,9 +27,9 @@
 +!update(CommunityName,OwnerName) : true <-  
 				    !setup_server(Server_Id);focus(Server_Id);
 
-					getTweets(Tweets,OwnerName);
+					getTweets(Messages,OwnerName);
 					
-					updateTweets(Tweets);
+					updateTweets(Messages);
 					
 					getMembers(Members,CommunityName);
 					updateMembers(Members);
@@ -42,8 +42,8 @@
 		!update(CommunityName).
 
 
-+!setup_server(Server_Id) <- joinRemoteWorkspace("city","l27.0.0.1",_);
-		 lookupArtifact("server_artifact",Server_Id)[wsp("city")].	
++!setup_server(Server_Id) <- joinRemoteWorkspace("city","127.0.0.1",_);
+		 lookupArtifact("server_artifact",Server_Id)[wsp("city")].		
 
 +create_twitter(CommunityName,CommunityType,OwnerName) : true <-
 		.concat("multi_agent_project_2019.",CommunityType,Type);

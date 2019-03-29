@@ -32,7 +32,7 @@ public class UserArtifact extends GUIArtifact {
     	if(!community_name.equals("") && !community_name.contains("-") && !community_name.contains(",")) {
     		String communityType = (String)frameUser.getCombo_create_community_type().getSelectedItem();
     		// create community and add it to the list of my communities
-    		this.signal("cmd", "createCommunity",community_name,communityType);
+    		this.signal("cmd","createCommunity",community_name,communityType);
     		frameUser.getCombo_delete_available_communities().addItem(community_name);
 
     	}else {
@@ -42,6 +42,7 @@ public class UserArtifact extends GUIArtifact {
     @INTERNAL_OPERATION void joinCommunity(ActionEvent ev){
     	int selected = frameUser.getCombo_join_availble_communities().getSelectedIndex();
     	Community comm = my_communities.get(selected);
+    	
     	if(comm.getCommunityType().equals("Community_1")) {
     		this.signal("cmd", "joinCommunity1",comm.getCommunityName(),comm.getCommunityType());
     	}else if(comm.getCommunityType().equals("Community_2")) {
@@ -76,8 +77,8 @@ public class UserArtifact extends GUIArtifact {
     }
 
 	@OPERATION
-	void updateCommunities(String message) {
-		String communities[] = message.split(",");
+	void updateCommunities(String m) {
+		String communities[] = m.split(",");
 		frameUser.getCombo_join_availble_communities().removeAllItems();
 		for (int i = 0; i < communities.length; i++) {
 			String attrbs[] = communities[i].split("-");

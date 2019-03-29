@@ -22,7 +22,7 @@ public class Community_2 extends GUIArtifact {
 		myMembers = new ArrayList<>();
 		this.init();
 	}
-    @INTERNAL_OPERATION void sendMessage(ActionEvent ev){
+    @INTERNAL_OPERATION void sendTweet(ActionEvent ev){
     	String tweetContent = myFrame.getText_area_tweet_content().getText().trim();
     	String reciever = (String)myFrame.getCombo_recievers_names().getSelectedItem();
     	this.signal("cmdSendTweet",tweetContent,reciever);
@@ -30,12 +30,12 @@ public class Community_2 extends GUIArtifact {
     @OPERATION
     void updateMembers(String tweet) {
 
-    	String members[] = tweet.split(",");
+    	String m[] = tweet.split(",");
     	myMembers = new ArrayList<>();
     	myFrame.getCombo_recievers_names().removeAllItems();
-    	for (int i = 0; i < members.length; i++) {
-			myMembers.add(members[i]);
-			myFrame.getCombo_recievers_names().addItem(members[i]);
+    	for (int i = 0; i < m.length; i++) {
+			myMembers.add(m[i]);
+			myFrame.getCombo_recievers_names().addItem(m[i]);
 		}
     	
     }

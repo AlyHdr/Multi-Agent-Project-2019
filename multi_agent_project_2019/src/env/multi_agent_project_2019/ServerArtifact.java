@@ -72,7 +72,7 @@ public class ServerArtifact extends GUIArtifact{
 		}
 		communities.remove(count-1);
 		
-		frame.text_area.append("Joined community..\n");
+		frame.text_area.append("deleted community..\n");
 	}
 	@OPERATION
 	void leaveCommunityOnServer(String communityName) {
@@ -173,7 +173,7 @@ public class ServerArtifact extends GUIArtifact{
 		for (Twitter twitter:twitters) {
 			if(twitter.getOwner().equals(reciever)) {
 
-				String twt = "Sender: "+sender+"\n"+"Content: "+tweetContent;
+				String twt = "Tweet from @"+sender+"\n"+"---->"+tweetContent;
 				twitter.getTwitter().add(twt);
 			}
 		}
