@@ -5,7 +5,6 @@ mas client{
 		focus : my_communities.user_artifact
 	}
 
-
 	
 	agent mailAgent : agent_1.asl {
 		
@@ -24,5 +23,3 @@ mas client{
   // change localhost to the IP of the machine where the server is launched
   node servernode running @127.0.0.1
 }
-
-

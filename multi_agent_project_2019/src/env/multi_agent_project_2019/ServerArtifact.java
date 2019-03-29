@@ -23,6 +23,7 @@ public class ServerArtifact extends GUIArtifact{
 	private ArrayList<Twitter> twitters;
 	private String forumTopic;
 	private Forum forum;
+	private boolean locked; 
 	public void init(String title) {
 		frame = new Frame();
 		frame.setTitle(title);
@@ -31,6 +32,7 @@ public class ServerArtifact extends GUIArtifact{
 		
 		mailboxes = new ArrayList<>();
 		twitters = new ArrayList<>();
+		locked = false;
 		this.init();
 	}
 
@@ -95,7 +97,7 @@ public class ServerArtifact extends GUIArtifact{
 			result+=community.toString()+",";
 		}
 		res.set(result);
-		//System.out.println("Getting communitities...");
+		frame.text_area.append("Getting communitities...");
 
 	}
 	@OPERATION
@@ -112,7 +114,7 @@ public class ServerArtifact extends GUIArtifact{
 			}
 		}
 		res.set(result);
-		//System.out.println("Getting communitities...");
+		frame.text_area.append("Getting memebers for community: "+communityName);
 
 	}
 
@@ -129,7 +131,7 @@ public class ServerArtifact extends GUIArtifact{
 		}
 		System.out.println("the result:"+result);
 		res.set(result);
-		//System.out.println("Getting communitities...");
+		frame.text_area.append("Getting messages for agent: "+agentName);
 
 	}
 	
@@ -192,7 +194,23 @@ public class ServerArtifact extends GUIArtifact{
 		
 
 	}
-	
+	@OPERATION
+	void lock() {
+		await("notLocked");
+		locked = true;
+	}
+
+	// a guard used by the operation lock
+	@GUARD
+	boolean notLocked() {
+		return !locked;
+	}
+
+	// unlock the environment
+	@OPERATION
+	void unlock() {
+		locked = false;
+	}
 	private class Frame extends JFrame{
 		JTextArea text_area;
 		public Frame() {

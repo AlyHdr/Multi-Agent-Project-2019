@@ -2,6 +2,8 @@
 
 /* Initial beliefs and rules */
 
+nbMessages(3).
+
 !setup.
 
 /* Initial goals */
@@ -26,13 +28,21 @@
 		
 +!update(CommunityName,OwnerName) : true <-  
 				    !setup_server(Server_Id);focus(Server_Id);
-
+					/*
+					 * use the gaurd lock to not allow any other agent to use the data on the server artifact
+					 */
+					lock
 					getMessages(Messages,OwnerName);
 					
 					updateMessages(Messages);
 					
 					getMembers(Members,CommunityName);
+					/*
+					 * unlock to let others get updates also
+					 */
+					unlock
 					updateMembers(Members);
+					
 					.wait(10000);
 					!update(CommunityName,OwnerName).
 
@@ -52,13 +62,14 @@
 		!update(CommunityName,OwnerName);
 	 .
 	 
-+cmdSendMessage(MessageContent,Reciever)
++cmdSendMessage(MessageContent,Reciever): nbMessages(N) & N>0
 	<- 	!setup_server(Server_Id);focus(Server_Id);
 		.my_name(Sender);
-	
+		N1 = N - 1;
+		-+nbMessages(N1);
 		upMailBox(MessageContent,Sender,Reciever);
 	.
-
++cmdSendMessage(MessageContent,Reciever):nbMessages(N) & N == 0<- .print("I will not send this message my head is full"); -+nbMessages(10).
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }

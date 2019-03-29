@@ -27,12 +27,22 @@
 +!update : true <-  
 				    !setup_server(Server_Id);focus(Server_Id);
 					.println("Update...");
+					/*
+					 * use the gaurd lock to not allow any other agent to use the data on the server artifact
+					 */
+					lock
+
 					getCommunities(Communities);
 					//stopFocus(Server_Id);
 					
 					//!setup_user(User_Id);focus(User_Id);
 					//lookupArtifact("user_artifact",User_Id);
 					//focus(User_Id);
+					/*
+					 * unlock to let others get updates also
+					 */
+					unlock
+					
 					updateCommunities(Communities);
 					.wait(10000);
 					!update.
