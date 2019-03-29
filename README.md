@@ -52,7 +52,7 @@ When this agent receives a message from the user-agent to achieve a goal, he cre
 * Update tweets : every user has a Tweets list stored in the *Server Artifact*, and the agent uses this list to keep be updated on tweets received from the owner agent; the agent interact with the server after every period of time, get the tweets and updates the twitter interface.(similarely to the agent mail interactions, all communication in this case have to go through the server artifact). 
 * Sending a tweet:  when the twitter user writes a tweet and click on the button *tweet*, the agent add this tweet on the tweets list (*on server*) associated to the agents that are focuced on the twitter artifact which means the assisatnt agents for the users that joined this community. 
 
-![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/agnttwitter.PNG)
+
 #### Agent 3
 
 This agent is designed to assist users to join and work with the forum community. He can create a Forum community by giving a name, and join with existing community by selecting a forum community name. This agent assists users to start, read and comment on forums in the forum community. 
@@ -85,6 +85,9 @@ This artifact is dedicated to provide facility to share tweets between users usi
 *SendTweets:* Community owner can broadcast tweets. This is an internal command which supports take user entered tweets and send it to the conected server,after that agent will use an update operation to update the twitter list and displays it on the interface of the user who is joining this Twitter community. 
 
 *UpdateTwitter:* this operation is supposed to update global tweets list the server. It updates tweets list according to clients interaction. 
+
+
+![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/agnttwitter.PNG)
 
 #### Forum Artifact
 Forum artifact provides platform to users to share information using forum community. User who create the community can define it's topic. Initiator can start a new forum in the community and other members can add more comments to the post. Community_3 artifact is responsible to manage forum related tasks. when someone joins to the community, artifact will locate forum user interface to that client. This artifact is supposed to provide startForum and updateForum services.
