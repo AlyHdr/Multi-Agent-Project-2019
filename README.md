@@ -26,7 +26,7 @@ Our system is composed of three main parts:
 ### ii.User Control
 The user control is based on two things but before going into it's details, we need to specify the specification of the problem and why this choice have been chosen. In our system a user can have many communities (i.e own many) of three different types, and also he can at any time delete one of those communities and consequently removing all the members.He can join or leave a community not only others communities but also he can join his own community and participate and act on it.For these tasks mentioned before a **user_agent** was designed to server them accompanied with the help of a **user_artifact** to show the user a nice interface of what is going on.  
 
-* **user_agent** : This agent had a set of initial goals:
+* **user_agent** : This agent uses the **server_artifact** lock (i.e **guard**) whenever it focuses on it and try to get any kind of update in order not to let any other agent to access the data at the same time and have conflicts, and it also have a set of initial goals:
     * Look for the user_artifact and focus on it.  
     * Update the user_artifact which makes the agent go get the list of communities from the server_artifact and come update back.
     After that the agent will be listening from incoming signals from the artifact to do either of those goals:  
