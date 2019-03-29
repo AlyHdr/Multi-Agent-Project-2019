@@ -70,6 +70,8 @@ This agent is designed to assist users to join and work with the forum community
 4. Search for Server artifact
 5. Update its members and content time to time
 6. When receive a create forum signal from user agent, make artifact to forum community
+7. Focus on the artifact
+8. Get signal to update servers forum list when member update or start a forum 
    
 ### iv.Artifacts Specification
 #### MailBox Artifact
@@ -91,6 +93,21 @@ Forum artifact provides platform to users to share information using forum commu
 	
 *UpdateForum:* when members update forums, these information should be updated server in real time. this function is supposed to do that real time updating
 
-## 3. Conclusion
+User interface to use forum artifact
+
+![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/forum.png)
+
+## 3. How to Use *Agents & Services in the city* 
+* Clone the repository
+* Change Server and Clinets **IP addresses** compatible with your environment
+* Run *server.jcm* under JaCaMO to run server
+* Run *client.jcm* under JaCaMo to run client assistants
+* Create Communities by giving a name and selecting a community type from the dropdown
+* Join, Leave from existing communities
+* Remove communities
+* After joining, Create each community types by following the flow
+
+
+## 4. Conclusion
 
 In general this project was a good experience to go through the programming of agents and environment in multi agent programming and this project could be extended and improved in the future, we could imagine a lot of agents that have different behavoirs regarding the community that they are in.Also this architecture could be applied on a mobile phone by an application or a special device to really accomplish the goal of a smart city.This is a start point and it could lead to enormous innovations in the future.
