@@ -2,7 +2,7 @@
 
 /* Initial beliefs and rules */
 
-nbMessages(3).
+nbMessages(10).
 
 !setup.
 
