@@ -57,7 +57,7 @@ When this agent receives a message from the user-agent to achieve a goal, he cre
 
 This agent is designed to assist users to join and work with the forum community. He can create a Forum community by giving a name, and join with existing community by selecting a forum community name. This agent assists users to start, read and comment on forums in the forum community. 
 	
-**Things to do,**
+**What this agent can do:**
 
 *Create Forum:* This functionality is supposed to create forum for any user who joined with the system. Joined member can create a forum by giving a topic. 
 	
@@ -78,8 +78,13 @@ This artifact is designed to support the user with an interface as in the figure
 ![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/mail_box.PNG )
 In this picture the user joined the community that he created and sent himself a message and that is possible in our design.
 #### Artifact 2
-#### Artifact 3
 
+#### Forum Artifact
+Forum artifact provides platform to users to share information using forum community. User who create the community can define it's topic. Initiator can start a new forum in the community and other members can add more comments to the post. Community_3 artifact is responsible to manage forum related tasks. when someone joins to the community, artifact will locate forum user interface to that client. This artifact is supposed to provide startForum and updateForum services.
+
+*StartForum:* Community members can start new forum. After filling topic and post content user can press the publish button. It signals the agent to start new forum. Agent will excutethat command as explaine in agent description. 
+	
+*UpdateForum:* when members update forums, these information should be updated server in real time. this function is supposed to do that real time updating
 
 ## 3. Conclusion
 
