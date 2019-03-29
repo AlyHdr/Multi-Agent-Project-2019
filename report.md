@@ -50,7 +50,24 @@ In this picture the user joined the community that he created and sent himself a
 #### Agent 2
 
 #### Agent 3
+This agent is designed to assist users to join and work with the *forum community*. He can create a Forum community by giving a name, and join with existing community by selecting a forum community name. This agent assist users to use create forum and share information on existing forums. 
 
+**Things agent does,**
+
+   *Create Forum:* This functionality is supposed to create forum for any user who joined with the system. Joined member can create a forum by giving a topic. 
+   
+   *Comment on Forum:* Any user who joined with the community is supposed to add comments to the posts if he has some information to share. 
+
+**How this agent works:** 
+   1. Join to the workspace
+   2. Join to server workspace
+   3. Listening to signal
+   4. Search for Server artifact 
+   5. Update its members and content time to time
+   6. When receive a create forum signal from user agent, make artifact to forum community
+   7. 
+   8. 
+   
 ### iv.Artifacts Specification
 #### MailBox Artifact
 
