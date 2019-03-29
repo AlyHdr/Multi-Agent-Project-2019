@@ -28,8 +28,8 @@ The user control is based on two things but before going into it's details, we n
 
 * **user_agent** : This agent uses the **server_artifact** lock (i.e **guard**) whenever it focuses on it and try to get any kind of update in order not to let any other agent to access the data at the same time and have conflicts, and it also have a set of initial goals:
     * Look for the user_artifact and focus on it.  
-    * Update the user_artifact which makes the agent go get the list of communities from the server_artifact and come update back.
-    After that the agent will be listening from incoming signals from the artifact to do either of those goals:  
+    * Update the user_artifact which makes the agent go get the list of communities from the server_artifact and come update back.  
+After that the agent will be listening from incoming signals from the artifact to do either of those goals:  
     * *Create community* to add the community on the server by using a **server_artifact** operation.  
     * *Delete community* to delete the community and all its members from the list of avaiblable communities using a**server_artifact** operation.  
     * *Join community* which sends to a specific agent according to the *community type* a message to make the artifact.  
@@ -81,4 +81,6 @@ In this picture the user joined the community that he created and sent himself a
 #### Artifact 3
 
 
-## 3. Interface and Running
+## 3. Conclusion
+
+In general this project was a good experience to go through the programming of agents and environment in multi agent programming and this project could be extended and improved in the future, we could imagine a lot of agents that have different behavoirs regarding the community that they are in.Also this architecture could be applied on a mobile phone by an application or a special device to really accomplish the goal of a smart city.This is a start point and it could lead to enormous innovations in the future.
