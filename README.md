@@ -80,7 +80,7 @@ In this picture the user joined the community that he created and sent himself a
 #### Twitter Like Artifact
 This artifact is dedicated to provide facility to share tweets between users using twiter like community.  The User who creates the community is it's *Owner*. Initiator can broadcast tweets and other joined members can see and reacts on owner's tweets (like) . Community_2 artifact of the system is responsible to manage *twitter like* tasks. When a client joins to the community, artifact will display twitter like user interface to that client. This artifact is supposed to provide sendTweets and updateTweets services.
 
-*SendTweets:* Community owner can broadcast tweets. This is an internal command which supports take user entered tweets and send it to the conected server. 
+*SendTweets:* Community owner can broadcast tweets. This is an internal command which supports take user entered tweets and send it to the conected server,after that agent will use an update operation to update the twitter list and displays it on the interface of the user who is joining this Twitter community. 
 
 *UpdateTwitter:* this operation is supposed to update global tweets list the server. It updates tweets list according to clients interaction. 
 
