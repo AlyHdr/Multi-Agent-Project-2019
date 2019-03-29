@@ -82,7 +82,7 @@ This artifact is dedicated to provide facility to share tweets using twiter like
 
 *SendTweets:* Community owner can broadcast tweets. This is an internal command which supports take user entered tweets and send it to the conected server. 
 
-*UpdateForum:* this operation is supposed to update global tweets list the server. It updates tweets list according to clients interaction. 
+*UpdateTwitter:* this operation is supposed to update global tweets list the server. It updates tweets list according to clients interaction. 
 
 #### Forum Artifact
 Forum artifact provides platform to users to share information using forum community. User who create the community can define it's topic. Initiator can start a new forum in the community and other members can add more comments to the post. Community_3 artifact is responsible to manage forum related tasks. when someone joins to the community, artifact will locate forum user interface to that client. This artifact is supposed to provide startForum and updateForum services.
