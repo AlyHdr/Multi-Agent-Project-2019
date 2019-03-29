@@ -43,10 +43,8 @@ Internal operations:
 This agent was designed to focus on a *mail_box* artifact inorder to accomplish the tasks to be done a community to serve messages between agents.First the agent will be listening until the user_agent sends it an achieve goal message which is to create the *mailbox_artifact* and focus on it to start percepting new goals.The agent is responsible of:
 * Update Members: whenever the artifact is created an update scenario is triggered which is a repeated process done by the agent to get the new members of the community from the server and add them to the list of available members in the *mailbox_artifact*.
 * Update Mailbox: each user have a mailbox in this community but all the messages are stored on the server, so that the agent have to keep also an update on the recieved messages.It contacts the server each *interval* of time and get the new messages to update the interface.(i.e no direct interaction between agents, it's like a client/server chat application).
-* Send Message: Whenever the user writes a message the and chooses the reciever who will be for sure a member of the community, the agent go add the new message to the mailbox of the reciever on the server.
-![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/mail_box.PNG )
+* Send Message: Whenever the user writes a message the and chooses the reciever who will be for sure a member of the community, the agent go add the new message to the mailbox of the reciever on the server.This agent reacts in weird way sometimes so it don't send a message if it had served 10 times the same task, it prints on the screen that it can't handle sending the message.
 
-In this picture the user joined the community that he created and sent himself a message and that is possible in our design.
 #### Agent 2 (twitter like agent) 
 This agent is designed to focus on a *twitter like* artifact, using this community,the owner agent (which means the one who creates the community) can *tweet* some "content" to other users that can access this *community* through joining it by their *assistant agents*.
 When this agent receives a message from the user-agent to achieve a goal, he creates the new *twitter artifact*, focus on it and starts percepting new goals.
@@ -75,7 +73,10 @@ This agent is designed to assist users to join and work with the forum community
    
 ### iv.Artifacts Specification
 #### MailBox Artifact
+This artifact is designed to support the user with an interface as in the figure below, also it has some internal and external operations for the sake of the agent focusing on it.Whenever this artifact is created by the agent responsible for messaging, the agent as mentioned before start getting updates about the *members* from the server and uses an operation to update the combo_box provided to the user to select a reciever from. More than that whenever the user clicks a button to send the message, we have an internal operation linked to that button which signals the agent to send the message to the server.Also there is an operation provided to the agent to update the mailbox on the interface which add the new recieved messages to the text_area.
 
+![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/mail_box.PNG )
+In this picture the user joined the community that he created and sent himself a message and that is possible in our design.
 #### Artifact 2
 #### Artifact 3
 
