@@ -1,4 +1,4 @@
-// Agent agent_1 in project multi_agent_project_2019
+// Agent agent_2 in project multi_agent_project_2019
 
 /* Initial beliefs and rules */
 
@@ -16,7 +16,7 @@
 		// focus of UserArtifcat
 		//focusWhenAvailable("user_artifact")
 		
-		println("ready", Me);
+		println("ready");
 		.
 		
 -!setup 
@@ -27,9 +27,9 @@
 +!update(CommunityName,OwnerName) : true <-  
 				    !setup_server(Server_Id);focus(Server_Id);
 
-					getMessages(Messages,OwnerName);
+					getPosts(Messages,OwnerName);
 					
-					updateMessages(Messages);
+					updateForum(Messages);
 					
 					getMembers(Members,CommunityName);
 					updateMembers(Members);
@@ -42,20 +42,22 @@
 		!update(CommunityName).
 
 
-+!setup_server(Server_Id) <- joinRemoteWorkspace("city","l27.0.0.1",_);
-		 lookupArtifact("server_artifact",Server_Id)[wsp("city")].	
++!setup_server(Server_Id) <- joinRemoteWorkspace("city","127.0.0.1",_);
+		 lookupArtifact("server_artifact",Server_Id)[wsp("city")].		
 
-+create_forum(CommunityName,CommunityType,OwnerName) : true <-
++create_post(CommunityName,CommunityType,OwnerName) : true <-
 		.concat("multi_agent_project_2019.",CommunityType,Type);
 		makeArtifact(CommunityName,Type,[CommunityName],Art_Id)
 		focus(Art_Id);
 		!update(CommunityName,OwnerName);
 	 .
 	 
-+cmdStartForum(forumTopic,forumPost)
++cmdStartForum(Topic,Content)
 	<- 	!setup_server(Server_Id);focus(Server_Id);
-		.my_name(owner);	
-		startForum(owner, forumTopic,forumPost).
+		.my_name(Sender);
+	
+		upPosts(Topic,Content, Sender);
+		.
 
 
 { include("$jacamoJar/templates/common-cartago.asl") }

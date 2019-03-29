@@ -48,12 +48,12 @@ public class Community_3 extends GUIArtifact {
     	
     }
     @OPERATION
-    void updateMessages(String message) {
+    void updateForum(String f) {
 
-    	String messages[] = message.split(",");
-    	myFrame.getText_area_messages().setText("");
-    	for (int i = 0; i < messages.length; i++) {
-    		myFrame.getText_area_messages().append(messages[i]);
+    	String forums[] = f.split(",");
+    	myFrame.getPostContent().setText("");
+    	for (int i = 0; i < forums.length; i++) {
+    		myFrame.getText_area_post().append(forums[i]);
     	}
     	
     }
