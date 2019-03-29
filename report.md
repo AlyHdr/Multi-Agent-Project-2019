@@ -52,7 +52,7 @@ This agent is designed to focus on a *twitter like* artifact, using this communi
 When this agent receives a message from the user-agent to achieve a goal, he creates the new *twitter artifact*, focus on it and starts percepting new goals.
 * Updatig the artifact members:  after creating a new artifact, an update is executed by the agent on loop to get the new members of this community from the Server and update the member's list existing in the *mail artifact*.
 * Update tweets : every user has a Tweets list stored in the *Server Artifact*, and the agent uses this list to keep be updated on tweets received from the owner agent; the agent interact with the server after every period of time, get the tweets and updates the twitter interface.(similarely to the agent mail interactions, all communication in this case have to go through the server artifact). 
-* Sending a tweet:  when the twitter user writes a tweet and click on the button *tweet*, the agent add this tweet on the tweets list (*on server*) associated the the agents that are focuced on the twitter artifact which means the assisatnt agents for the users that joined this community. 
+* Sending a tweet:  when the twitter user writes a tweet and click on the button *tweet*, the agent add this tweet on the tweets list (*on server*) associated to the agents that are focuced on the twitter artifact which means the assisatnt agents for the users that joined this community. 
 
 ![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/agnttwitter.PNG)
 #### Agent 3
