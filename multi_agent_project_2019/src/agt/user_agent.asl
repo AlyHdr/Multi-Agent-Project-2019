@@ -113,9 +113,10 @@
 		joinCommunityOnServer(CommunityName,Me);
 		
 		//.send(mailAgent,tell,create_mailbox(CommunityName,CommunityType,Me));
-		.send(agentThree, tell, create_forum(CommunityName, CommunityType, Me));
+		.send(agentForum, tell, create_post(CommunityName, CommunityType, Me));
         //.send(othmane_agent, tell, create_twitter(CommunityName, CommunityType, Me));
         .
+
 +cmd("deleteCommunity",CommunityName)
 	<- 
 		!setup_server(Server_Id);

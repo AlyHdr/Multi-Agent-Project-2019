@@ -50,6 +50,9 @@ public class UserArtifact extends GUIArtifact {
     	}else if(comm.getCommunityType().equals("Community_3")) {
     		this.signal("cmd", "joinCommunity3",comm.getCommunityName(),comm.getCommunityType());	
     	}
+//    	else if(comm.getCommunityType().equals("Community_4")) {
+//    		this.signal("cmd", "joinCommunity4",comm.getCommunityName(),comm.getCommunityType());	
+//    	}
     	frameUser.getCombo_leave_availble_communties().addItem(comm.getCommunityName());
     }
     @INTERNAL_OPERATION void leaveCommunity(ActionEvent ev){

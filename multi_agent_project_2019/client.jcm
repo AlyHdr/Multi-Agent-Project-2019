@@ -13,7 +13,11 @@ mas client{
 				
 	}
 	
-	agent agentThree : agent_3.asl {
+//	agent agentThree : agent_3OLD.asl {
+//				
+//	}
+	
+	agent agentForum : agent_3.asl {
 				
 	}
 	workspace my_communities {
