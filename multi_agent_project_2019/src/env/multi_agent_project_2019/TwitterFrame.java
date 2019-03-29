@@ -4,6 +4,10 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class TwitterFrame extends javax.swing.JFrame {
@@ -27,8 +31,12 @@ public class TwitterFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         btn_send_tweet = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        btn_send_tweet.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
         combo_recievers_names = new javax.swing.JComboBox<>();
+        combo_recievers_names.setVisible(false);
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         text_area_tweets = new javax.swing.JTextArea();
@@ -39,9 +47,7 @@ public class TwitterFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("tweet Content:");
 
-        btn_send_tweet.setText("Send tweet");
-
-        jLabel2.setText("Send to:");
+        btn_send_tweet.setText("Tweet");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Tweets:");
@@ -53,10 +59,12 @@ public class TwitterFrame extends javax.swing.JFrame {
         btn_clear_tweets.setText("Clear Tweets");
         
         JButton btnLike = new JButton("like");
+        btnLike.setForeground(Color.BLUE);
+        btnLike.setFont(new Font("Tahoma", Font.ITALIC, 11));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
+        	layout.createParallelGroup(Alignment.TRAILING)
         		.addGroup(layout.createSequentialGroup()
         			.addGroup(layout.createParallelGroup(Alignment.LEADING)
         				.addGroup(layout.createSequentialGroup()
@@ -67,8 +75,7 @@ public class TwitterFrame extends javax.swing.JFrame {
         							.addGap(115))
         						.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)
         						.addGroup(layout.createSequentialGroup()
-        							.addComponent(jLabel2)
-        							.addPreferredGap(ComponentPlacement.UNRELATED)
+        							.addGap(51)
         							.addComponent(combo_recievers_names, 0, 181, Short.MAX_VALUE)))
         					.addGap(158))
         				.addGroup(layout.createSequentialGroup()
@@ -83,15 +90,12 @@ public class TwitterFrame extends javax.swing.JFrame {
         					.addGap(35)
         					.addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
         			.addGap(39))
-        		.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        		.addGroup(layout.createSequentialGroup()
         			.addContainerGap(435, Short.MAX_VALUE)
-        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        				.addGroup(layout.createSequentialGroup()
-        					.addComponent(btnLike, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
-        					.addContainerGap())
-        				.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
-        					.addComponent(btn_clear_tweets, GroupLayout.PREFERRED_SIZE, 195, GroupLayout.PREFERRED_SIZE)
-        					.addContainerGap())))
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(btnLike, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(btn_clear_tweets, GroupLayout.PREFERRED_SIZE, 195, GroupLayout.PREFERRED_SIZE))
+        			.addContainerGap())
         );
         layout.setVerticalGroup(
         	layout.createParallelGroup(Alignment.LEADING)
@@ -105,9 +109,7 @@ public class TwitterFrame extends javax.swing.JFrame {
         				.addGroup(layout.createSequentialGroup()
         					.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)
         					.addGap(18)
-        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
-        						.addComponent(jLabel2)
-        						.addComponent(combo_recievers_names, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+        					.addComponent(combo_recievers_names, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         					.addGap(34)
         					.addComponent(btn_send_tweet))
         				.addComponent(jScrollPane2, GroupLayout.PREFERRED_SIZE, 263, GroupLayout.PREFERRED_SIZE))
@@ -151,7 +153,6 @@ public class TwitterFrame extends javax.swing.JFrame {
     private javax.swing.JButton btn_send_tweet;
     private javax.swing.JComboBox<String> combo_recievers_names;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

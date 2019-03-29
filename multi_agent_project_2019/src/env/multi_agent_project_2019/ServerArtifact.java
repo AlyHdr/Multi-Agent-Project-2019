@@ -173,7 +173,7 @@ public class ServerArtifact extends GUIArtifact{
 		for (Twitter twitter:twitters) {
 			if(twitter.getOwner().equals(reciever)) {
 
-				String twt = "Tweet from @"+sender+"\n"+"---->"+tweetContent;
+				String twt = "Tweet from @"+sender+"\n"+"---->"+tweetContent+"\n";
 				twitter.getTwitter().add(twt);
 			}
 		}

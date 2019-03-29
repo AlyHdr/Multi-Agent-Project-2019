@@ -47,7 +47,7 @@ public class Community_2 extends GUIArtifact {
     	for (int i = 0; i < tweets.length; i++) {
     		myFrame.getText_area_tweets().append(tweets[i]);
     	}
-    	
+
     }
 }
 
