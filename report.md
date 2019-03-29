@@ -47,27 +47,14 @@ This agent was designed to focus on a *mail_box* artifact inorder to accomplish 
 ![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/mail_box.PNG )
 
 In this picture the user joined the community that he created and sent himself a message and that is possible in our design.
-#### Agent 2
-
+#### Agent 2 (twitter like agent) 
+This agent is designed to focus on a *twitter like* artifact, using this community,the owner agent (which means the one who creates the community) can *tweet* some "content" to other users that can access this *community* through joining it by their *assistant agents*.
+When this agent receives a message from the user-agent to achieve a goal, he creates the new *twitter artifact*, focus on it and starts percepting new goals.
+* Updatig the artifact members:  after creating a new artifact, an update is executed by the agent on loop to get the new members of this community from the Server and update the member's list existing in the *mail artifact*.
+* Update tweets : every user has a Tweets list stored in the *Server Artifact*, and the agent uses this list to keep be updated on tweets received from the owner agent; the agent interact with the server after every period of time, get the tweets and updates the twitter interface.(similarely to the agent mail interactions, all communication in this case have to go through the server artifact). 
+* Sending a tweet:  when the twitter user writes a tweet and click on the button *tweet*, the agent add this tweet on the tweets list (*on server*) associated the the agents that are focuced on the twitter artifact which means the assisatnt agents for the users that joined this community. 
 #### Agent 3
-This agent is designed to assist users to join and work with the *forum community*. He can create a Forum community by giving a name, and join with existing community by selecting a forum community name. This agent assist users to use create forum and share information on existing forums. 
 
-**Things agent does,**
-
-   *Create Forum:* This functionality is supposed to create forum for any user who joined with the system. Joined member can create a forum by giving a topic. 
-   
-   *Comment on Forum:* Any user who joined with the community is supposed to add comments to the posts if he has some information to share. 
-
-**How this agent works:** 
-   1. Join to the workspace
-   2. Join to server workspace
-   3. Listening to signal
-   4. Search for Server artifact 
-   5. Update its members and content time to time
-   6. When receive a create forum signal from user agent, make artifact to forum community
-   7. 
-   8. 
-   
 ### iv.Artifacts Specification
 #### MailBox Artifact
 
