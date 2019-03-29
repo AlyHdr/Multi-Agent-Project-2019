@@ -106,7 +106,7 @@ public class FrameUser extends javax.swing.JFrame {
 
         jLabel6.setText("Type:");
 
-        combo_create_community_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Community_1", "Community_2", "Community_3", " " }));
+        combo_create_community_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Community_1", "Community_2", "Community_3"}));
 
         btn_create_community.setText("Create Community");
 

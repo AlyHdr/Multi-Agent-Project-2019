@@ -45,9 +45,15 @@ public class ForumFrame extends javax.swing.JFrame {
         });
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        text_area_messages = new javax.swing.JTextArea();
+        text_area_forum_posts = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         btnClear = new javax.swing.JButton();
+        btnClear.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        
+        btnClear.setVisible(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,9 +69,9 @@ public class ForumFrame extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Forum Posts");
 
-        text_area_messages.setColumns(20);
-        text_area_messages.setRows(5);
-        jScrollPane2.setViewportView(text_area_messages);
+        text_area_forum_posts.setColumns(20);
+        text_area_forum_posts.setRows(5);
+        jScrollPane2.setViewportView(text_area_forum_posts);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -179,8 +185,8 @@ public class ForumFrame extends javax.swing.JFrame {
     public javax.swing.JTextArea getPostContent() {
 		return text_area_post_content;
 	}
-    public javax.swing.JTextArea getText_area_messages() {
-		return text_area_messages;
+    public javax.swing.JTextArea getText_area_post() {
+		return text_area_forum_posts;
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -192,6 +198,6 @@ public class ForumFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea text_area_post_content;
-    private javax.swing.JTextArea text_area_messages;
+    private javax.swing.JTextArea text_area_forum_posts;
     private JTextField text_field_topic_content;
 }
