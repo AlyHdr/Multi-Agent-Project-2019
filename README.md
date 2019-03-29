@@ -84,7 +84,7 @@ This artifact is dedicated to provide facility to share tweets between users usi
 
 *SendTweets:* Community owner can broadcast tweets. This is an internal command which supports take user entered tweets and send it to the conected server,after that agent will use an update operation to update the twitter list and displays it on the interface of the user who is joining this Twitter community. 
 
-*UpdateTwitter:* this operation is supposed to update global tweets list the server. It updates tweets list according to clients interaction. 
+*UpdateTwitter:* this operation is supposed to update global tweets list in the server. It updates tweets list according to clients interaction. 
 
 
 ![alt text](https://github.com/AlyHdr/Multi-Agent-Project-2019/blob/master/agnttwitter.PNG)
